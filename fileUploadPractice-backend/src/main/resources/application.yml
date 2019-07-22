@@ -1,0 +1,10 @@
+server:
+    port: 9007
+    
+logging:
+    file: fileUploadPractice-backend.log
+    level:
+        com.wau.genesis: DEBUG
+        
+fileUpload:
+    fileDirectory: /tmp/fileUploadPractice
