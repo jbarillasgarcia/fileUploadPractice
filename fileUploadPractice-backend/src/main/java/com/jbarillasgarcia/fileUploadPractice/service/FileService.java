@@ -4,9 +4,6 @@ import com.jbarillasgarcia.fileUploadPractice.dao.FileRepository;
 import com.jbarillasgarcia.fileUploadPractice.model.FileEntity;
 import com.jbarillasgarcia.fileUploadPractice.util.FileConfiguration;
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Date;
 import java.util.List;
 import org.apache.commons.io.FilenameUtils;
@@ -53,6 +50,10 @@ public class FileService {
     
     public List<FileEntity> list() {
         return (List<FileEntity>) this.fileRepository.findAll();
+    }
+    
+    public void reset() {
+        this.fileRepository.deleteAll();
     }
     
 }
