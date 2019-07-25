@@ -4,6 +4,8 @@ import com.jbarillasgarcia.fileUploadPractice.dao.FileRepository;
 import com.jbarillasgarcia.fileUploadPractice.model.FileEntity;
 import com.jbarillasgarcia.fileUploadPractice.util.FileConfiguration;
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 import org.apache.commons.io.FilenameUtils;
@@ -53,6 +55,18 @@ public class FileService {
     }
     
     public void reset() {
+        List<FileEntity> allFiles = (List<FileEntity>) this.fileRepository.findAll();
+        
+        for (FileEntity file : allFiles) {            
+            File physicalFile = new File(String.format("%s/%s", this.fileConfiguration.getFileDirectory(), file.getStoredFilename()));
+            
+            if (physicalFile.exists()) {
+                this.logger.info(String.format("Deleting file %s", physicalFile.getPath()));
+                physicalFile.delete();
+            }
+            
+        }
+        
         this.fileRepository.deleteAll();
     }
     
