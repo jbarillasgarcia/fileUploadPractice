@@ -1,6 +1,6 @@
 # File Upload Practice
 
-A NuxtJS/VueJS Application to upload files and gather metadata. Uses Spring Boot + RESTful Services.
+A Vue/Nuxt Application to upload files and gather metadata. Uses Spring Boot in the backend to provide necessary services to upload file, list files and reset system.
 
 ## Backend Usage
 ### Configure
