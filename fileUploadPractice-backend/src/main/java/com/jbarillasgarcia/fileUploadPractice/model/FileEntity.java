@@ -35,7 +35,7 @@ public class FileEntity implements Serializable {
     private Long fileSize;
     
     @Column(name = "created_time")
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date createdTime;
 
     public FileEntity() {
