@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author Josué Barillas (jbarillas)
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/file")
 public class FileController {
     
@@ -28,7 +31,7 @@ public class FileController {
     
     @Autowired
     private FileService fileService;
-    
+            
     @PostMapping(path = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ResponseDto> upload(@RequestParam("file") MultipartFile file) {
         this.logger.debug(String.format("@%s::upload(%s)", this.getClass().getName(), file.getOriginalFilename()));
@@ -53,6 +56,8 @@ public class FileController {
     
     @GetMapping("/list")
     public ResponseEntity<ResponseDto> list() {
+        this.logger.debug(String.format("@%s::list()", this.getClass().getName()));
+        
         ResponseDto<List> response = new ResponseDto();
         
         try {            
@@ -66,5 +71,13 @@ public class FileController {
         
         return ResponseEntity.ok(response);
     }
-
+    
+    @DeleteMapping("/reset")
+    public ResponseEntity<Object> reset() {
+        this.logger.debug(String.format("@%s::reset()", this.getClass().getName()));
+        
+        this.fileService.reset();
+        
+        return ResponseEntity.ok().build();
+    }
 }
