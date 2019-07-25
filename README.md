@@ -10,7 +10,6 @@ A NuxtJS/VueJS Application to upload files and gather metadata. Uses Spring Boot
 
 ### Run
 
-- Clone repository into your local machine
 - Compile your File Upload Practice Backend application in your preferred IDE (Netbeans, IntelliJ, Eclipse, etc.). 
 - Once you have successfully build your application. You can run the JAR file created at your target folder using the commands indicated below.
 - By default, backend module runs at port 9007 (http://localhost:9007/)
